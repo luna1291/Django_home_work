@@ -15,7 +15,9 @@ Including another URLconf
 """
 
 from django.urls import path
+from recipes import recipes
+
 
 urlpatterns = [
-    # здесь зарегистрируйте вашу view-функцию
+    path('recipe/', recipes) #не пришло понимание, как задать строку с выборкой ключа из массива DATA
 ]
