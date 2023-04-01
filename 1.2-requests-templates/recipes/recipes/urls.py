@@ -14,10 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
+
 from django.urls import path
-from recipes import recipes
+from calculator.views import recipes
 
 
 urlpatterns = [
-    path('recipe/', recipes) #не пришло понимание, как задать строку с выборкой ключа из массива DATA
+    path('<menu>/', recipes),
 ]

@@ -21,23 +21,17 @@ DATA = {
     },
 }
 
-def recipes(request):
-    menu = request.GET('recipe') #не могу понять как составить запрос к выборке по ключу массива DATA                   
+def recipes(request, menu):
+    recipe = DATA[menu]
     servings = int(request.GET.get("servings", 1))
-    recipe = DATA.get(menu)
-    for ingredient, amount in recipe.items():                         
-        return (f'{ingredient} : {round(float(amount) * servings, 2)}')
-    
-    context = {
-        "recipe" : recipe
-    }
+    for k, v in recipe.items():     
+        context = {
+            'recipe' : {
+                k : round(v * int(servings),2)
+            }
+        }
     return render(request, 'calculator/index.html', context)
-
-# for i in range(0, len(DATA)): неудачная попытка составить запрос по меню http://127.0.0.1:8000/omlet/
-#     menu = list(DATA.keys())
-#     print (menu)
-
-    
+   
 # Напишите ваш обработчик. Используйте DATA как источник данных
 # Результат - render(request, 'calculator/index.html', context)
 # В качестве контекста должен быть передан словарь с рецептом:
