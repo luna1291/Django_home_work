@@ -11,10 +11,11 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+# from pathlib import Path #add
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) #dell
+# BASE_DIR = Path(__file__).resolve().parent.parent #add
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '0cir6)b-3&nij^mfa%7&)7e(i(eaiy8at3cgzen3*!3+1)p)0c'
 
@@ -31,8 +32,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles',  
     'phones',
+ 
 ]
 
 MIDDLEWARE = [
@@ -55,7 +57,7 @@ DATABASES = {
         'HOST': '127.0.0.1',
         'PORT': '5432',
         'USER': 'postgres',
-        'PASSWORD': 'ваш пароль',
+        'PASSWORD': '123',
     }
 }
 

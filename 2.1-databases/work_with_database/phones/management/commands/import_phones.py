@@ -1,7 +1,7 @@
-import csv
 
-from django.core.management.base import BaseCommand
 from phones.models import Phone
+from django.core.management.base import BaseCommand
+import csv
 
 
 class Command(BaseCommand):
@@ -12,6 +12,15 @@ class Command(BaseCommand):
         with open('phones.csv', 'r') as file:
             phones = list(csv.DictReader(file, delimiter=';'))
 
-        for phone in phones:
-            # TODO: Добавьте сохранение модели
-            pass
+            for phone in phones:
+                phone = Phone.objects.create(
+                    id = phone['id'],
+                    name = phone['name'],
+                    price = phone['price'],
+                    image = phone['image'],
+                    release_date = phone['release_date'],
+                    lte_exists = phone['lte_exists'])             
+                phone.save()  
+                pass
+
+        
